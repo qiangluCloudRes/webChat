@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lynch.dao.mapper.ChannelMemberExtMapper" >
+
+    <insert id="saveChannelMembers" parameterType="java.util.ArrayList">
+        INSERT INTO group_member (group_id,uid,join_time)
+        VALUES
+        <foreach collection="records" index="item" item="record"  separator=",">
+            (#{record.groupId,jdbcType=BIGINT},#{record.uid,jdbcType=BIGINT},
+            #{record.joinTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+
+</mapper>
